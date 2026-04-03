@@ -1,90 +1,88 @@
-# 🧠 Breast Cancer Tumor Classification
+# Breast Cancer Prediction
 
-This project focuses on classifying breast cancer tumors as:
-- **Benign (B)** – non-cancerous  
-- **Malignant (M)** – cancerous  
-
-The goal is to use a machine learning model to predict the diagnosis based on cell features.
+Machine learning classification of breast cancer tumors based on cell measurements.
 
 ---
 
-## 📊 Dataset
+## About
 
-The project uses the **Wisconsin Breast Cancer Dataset**.
+The goal of this project is to classify breast tumors as **benign (B)** or **malignant (M)**
+based on numerical measurements of cell nuclei obtained from biopsies.
 
-- 👥 Number of samples: ~568 patients  
-- 🔢 Features: 30 numerical attributes  
-- 🎯 Target: `diagnosis` (B / M)
-
-Each feature is represented in three forms:
-- `_mean` – average value  
-- `_se` – standard error  
-- `_worst` – worst (largest) value  
+This project was developed as a semestral assignment for **IB031 – Introduction to Machine Learning**.
 
 ---
 
-## 🔍 Project Workflow
+## Dataset
 
-### 1. Data Loading & Cleaning
-- removed unnecessary columns  
-- formatted the diagnosis column  
-- checked for missing values  
+**Wisconsin Breast Cancer Dataset**
 
-### 2. Exploratory Data Analysis (EDA)
-- class distribution visualization  
-- feature histograms  
-- correlation heatmap  
-- boxplots  
+| | |
+|---|---|
+| Source | [golianr/BreastCancerCellsDataset](https://github.com/golianr/BreastCancerCellsDataset) |
+| Samples | 568 patients |
+| Features | 30 numerical |
+| Target | `diagnosis` — B (benign) / M (malignant) |
 
-### 3. Data Preprocessing
-- train/test split (80/20)  
-- handling missing values (`SimpleImputer`)  
-- feature scaling (`StandardScaler`)  
-
-### 4. Model
-Used model:
-- **Logistic Regression**
-
-Why this model:
-- simple and fast  
-- interpretable  
-- suitable for binary classification  
+For each of the 10 cell properties (radius, texture, perimeter, area, smoothness, compactness, concavity, concave points, symmetry, fractal_dimension), three statistics are available: `_mean`, `_se`, `_worst`.
 
 ---
 
-## 🤖 Results
+## Project structure
 
-The model achieved solid performance in classifying tumors.
+```
+breast-cancer-prediction
+ ┣ Breast_Cancer_Prediction.ipynb   # Main notebook
+ ┗ README.md
+```
 
-Evaluation metrics:
-- Accuracy  
-- Confusion Matrix  
-- Classification Report  
+### Notebook contents
 
----
-
-## 📈 Technologies Used
-
-- Python  
-- pandas, numpy  
-- matplotlib, seaborn  
-- scikit-learn  
-
----
-
-## 🧠 What I Learned
-
-- working with real-world datasets  
-- data cleaning and preprocessing  
-- data visualization  
-- training machine learning models  
-- evaluating model performance  
+| Section | Description |
+|---------|-------------|
+| 1. Imports | Libraries and dependencies |
+| 2. Constants | Dataset URL, feature list |
+| 3. Data loading & cleaning | Dataset processing functions |
+| 4. Dataset description | Column overview and meaning |
+| 5. EDA | Statistics, histograms, heatmap, boxplots |
+| 6. Preprocessing | Train/test split, imputation, standardization |
+| 7. Model | Logistic Regression — training, interpretation, evaluation |
+| 8. Conclusion | Results and findings |
 
 ---
 
-## 🚀 Future Improvements
+## Model
 
-- try more advanced models (Random Forest, SVM)  
-- hyperparameter tuning  
-- cross-validation  
-- deploy as a web application  
+### Logistic Regression
+
+Logistic Regression predicts the probability of a malignant tumor using the sigmoid function.
+If the output is > 0.5, the sample is classified as malignant.
+
+**Preprocessing pipeline:**
+- Missing values → filled with median (`SimpleImputer`)
+- Features → standardized to mean 0, std 1 (`StandardScaler`)
+- Train/test split → 80% / 20%, stratified
+
+---
+
+## Getting started
+
+### Requirements
+
+```bash
+pip install numpy pandas matplotlib seaborn scikit-learn openpyxl
+```
+
+### Run the notebook
+
+```bash
+jupyter notebook Breast_Cancer_Prediction.ipynb
+```
+
+> The dataset is downloaded automatically from GitHub when the notebook is run.
+
+---
+
+## 👤 Author
+
+**Richard Golian** — IB031 Semestral Project
