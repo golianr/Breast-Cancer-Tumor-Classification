@@ -1,15 +1,16 @@
 # Breast Cancer Prediction
 
-Machine learning classification of breast cancer tumors based on cell measurements.
+Machine learning classification project for predicting whether breast cancer tumors are **benign (B)** or **malignant (M)** based on numerical cell measurements.
+
+This project was developed as a semestral assignment for **IB031 – Introduction to Machine Learning**.
 
 ---
 
 ## About
 
-The goal of this project is to classify breast tumors as **benign (B)** or **malignant (M)**
-based on numerical measurements of cell nuclei obtained from biopsies.
+The goal of this project is to build, train, evaluate, and compare machine learning models for binary classification of breast cancer tumors.
 
-This project was developed as a semestral assignment for **IB031 – Introduction to Machine Learning**.
+The models use numerical measurements of cell nuclei obtained from biopsy samples. The classification task is medically sensitive, because false negative predictions — malignant tumors classified as benign — are especially risky. Therefore, the project evaluates models not only using accuracy, but also precision, recall, F1-score, confusion matrices, and ROC analysis.
 
 ---
 
@@ -17,72 +18,34 @@ This project was developed as a semestral assignment for **IB031 – Introductio
 
 **Wisconsin Breast Cancer Dataset**
 
-| | |
+| Property | Description |
 |---|---|
 | Source | [golianr/BreastCancerCellsDataset](https://github.com/golianr/BreastCancerCellsDataset) |
 | Samples | 568 patients |
-| Features | 30 numerical |
-| Target | `diagnosis` — B (benign) / M (malignant) |
+| Features | 30 numerical features |
+| Target | `diagnosis` — B benign / M malignant |
 
-For each of the 10 cell properties (radius, texture, perimeter, area, smoothness, compactness, concavity, concave points, symmetry, fractal_dimension), three statistics are available: `_mean`, `_se`, `_worst`.
+For each of the 10 cell properties, three statistics are available: `_mean`, `_se`, and `_worst`.
+
+The measured properties include:
+
+- radius
+- texture
+- perimeter
+- area
+- smoothness
+- compactness
+- concavity
+- concave points
+- symmetry
+- fractal dimension
 
 ---
 
-## Project structure
+## Project Structure
 
-```
+```text
 breast-cancer-prediction
- ┣ Breast_Cancer_Prediction.ipynb   # Main notebook
- ┗ README.md
-```
-
-### Notebook contents
-
-| Section | Description |
-|---------|-------------|
-| 1. Imports | Libraries and dependencies |
-| 2. Constants | Dataset URL, feature list |
-| 3. Data loading & cleaning | Dataset processing functions |
-| 4. Dataset description | Column overview and meaning |
-| 5. EDA | Statistics, histograms, heatmap, boxplots |
-| 6. Preprocessing | Train/test split, imputation, standardization |
-| 7. Model | Logistic Regression — training, interpretation, evaluation |
-| 8. Conclusion | Results and findings |
-
----
-
-## Model
-
-### Logistic Regression
-
-Logistic Regression predicts the probability of a malignant tumor using the sigmoid function.
-If the output is > 0.5, the sample is classified as malignant.
-
-**Preprocessing pipeline:**
-- Missing values → filled with median (`SimpleImputer`)
-- Features → standardized to mean 0, std 1 (`StandardScaler`)
-- Train/test split → 80% / 20%, stratified
-
----
-
-## Getting started
-
-### Requirements
-
-```bash
-pip install numpy pandas matplotlib seaborn scikit-learn openpyxl
-```
-
-### Run the notebook
-
-```bash
-jupyter notebook Breast_Cancer_Prediction.ipynb
-```
-
-> The dataset is downloaded automatically from GitHub when the notebook is run.
-
----
-
-## 👤 Author
-
-**Richard Golian** — IB031 Semestral Project
+ ┣ Breast_Cancer_Prediction.ipynb   # Main Jupyter Notebook
+ ┣ README.md                        # Project documentation
+ ┗ documentation.pdf                # Final project documentation, if included
